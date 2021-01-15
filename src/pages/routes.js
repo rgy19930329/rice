@@ -1,4 +1,4 @@
-const routes = [{
+module.exports = [{
   path: '/',
   component: '../layouts/index',
   routes: [{
@@ -15,5 +15,3 @@ const routes = [{
     }
   ]
 }]
-
-module.exports = routes;

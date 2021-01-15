@@ -1,5 +1,6 @@
 import path from 'path';
 import routes from './src/pages/routes';
+import config from './env/config';
 
 const rootdir = path.join(__dirname, '.');
 
@@ -12,22 +13,26 @@ export default {
   },
   targets: {
     ie: 11,
+	},
+  context: {
+    config: encodeURI(JSON.stringify(config)),
   },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
-    ['umi-plugin-react', {
-      antd: false,
-      dva: false,
-      dynamicImport: false,
-      title: 'rice',
-      dll: false,
+    [
+      'umi-plugin-react',
+      {
+        antd: false,
+        dva: false,
+        dynamicImport: false,
+        title: 'rice',
+        dll: false,
 
-      routes: {
-        exclude: [
-          /components\//,
-        ],
+        routes: {
+          exclude: [/components\//],
+        },
       },
-    }],
+    ],
   ],
   extraBabelPlugins: [
     [
@@ -38,6 +43,10 @@ export default {
         style: true,
       },
       'antd',
-    ]
-  ]
-}
+    ],
+  ],
+  // externals: {
+  // 	react: 'window.React',
+  // 	'react-dom': 'window.ReactDOM',
+  // },
+};

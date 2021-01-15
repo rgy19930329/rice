@@ -4,6 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <title>Your App</title>
+  <script>
+    window.rice = {
+      config: JSON.parse(decodeURI("<%= context.config %>")),
+      env: "<%= context.env %>"
+    };
+  </script>
 </head>
 
 <body>
